@@ -5,6 +5,7 @@ Java REST API represendando um contexto bancario.
 ```mermaid
 classDiagram
     class User {
+        +Long id
         +String name
         +Account account
         +Feature[] features
