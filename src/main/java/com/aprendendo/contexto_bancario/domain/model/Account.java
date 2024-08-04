@@ -7,8 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@Entity(name = "tb_account")
+@Entity
+@Table(name = "tb_account")
 public class Account {
 
 	@Id
@@ -17,12 +19,14 @@ public class Account {
 	
 	@Column(unique = true)
 	private String number;
+	
 	private int agency;
 	
-	@Column(scale = 13, precision = 2)
+	@Column(precision = 13, scale = 2)
 	private BigDecimal balance;
 	
-	@Column(scale = 13, precision = 2)
+	//Importante o name abaixo para nao confundir com a palavra limit por ser uma palavra reservada do sistema
+	@Column(name ="additional_limit", precision = 13, scale = 2)
 	private BigDecimal limit;
 	
 	public Account() {
