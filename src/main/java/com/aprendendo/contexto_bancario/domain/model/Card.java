@@ -1,5 +1,7 @@
 package com.aprendendo.contexto_bancario.domain.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,13 +20,13 @@ public class Card {
 	@Column(unique = true)
 	private String number;
 	
-	@Column(name ="available_limit", precision = 13, scale = 2)
-	private double limit;
+	@Column(name ="available_limit", precision = 13, scale = 2) //https://stackoverflow.com/questions/75862838/hibernate6-throw-exception-scale-has-no-meaning-for-floating-point-numbers
+	private BigDecimal limit;   //<<<--------estava double
 	
 	public Card() {
 	}
 
-	public Card(String number, double limit) {
+	public Card(String number, BigDecimal limit) {
 		super();
 		this.number = number;
 		this.limit = limit;
@@ -38,11 +40,11 @@ public class Card {
 		this.number = number;
 	}
 
-	public double getLimit() {
+	public BigDecimal getLimit() {
 		return limit;
 	}
 
-	public void setLimit(double limit) {
+	public void setLimit(BigDecimal limit) {
 		this.limit = limit;
 	}
 
